@@ -19,7 +19,7 @@ function generateCode($length=6) {
 
 # Соединямся с БД
 
-require "password.php";
+require "config.php";
 
 $con = mysql_connect($servername, $username, $password);
 if (!$con)
@@ -45,7 +45,7 @@ if(isset($_POST['submit']))
 
       # Соавниваем пароли
 
-      if($data['user_password'] === md5(md5($_POST['password'])))
+      if($data['user_password'] === md5(md5($_POST['user_password'])))
 
       {
 
@@ -55,7 +55,7 @@ if(isset($_POST['submit']))
 
               
 
-          if(!@$_POST['not_attach_ip'])
+          if(!$_POST['not_attach_ip'])
 
           {
 

@@ -2,7 +2,7 @@
 
 # Podłaczenia do bd
 
-require_once "password.php";
+require_once "config.php";
 
 $con = mysql_connect($servername, $username, $password);
 if (!$con)
@@ -70,11 +70,11 @@ if(isset($_POST['submit']))
 
  # Убераем лишние пробелы и делаем двойное шифрование
 
-        $user_password = md5(md5(trim($_POST['password'])));
+        $user_password = md5(md5(trim($_POST['user_password'])));
 
         
 
-        mysql_query("INSERT INTO users SET user_login='".$login."', user_password='".$user_password."'");
+        mysql_query("INSERT INTO users SET user_login='".$login."', password='".$user_password."'");
 
         header("Location: login.php"); exit();
 

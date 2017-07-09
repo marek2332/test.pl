@@ -4,10 +4,17 @@
 
 
 # Соединямся с БД
+require "config.php";
 
-mysql_connect("localhost", "myhost", "myhost");
+$con = mysql_connect($servername, $username, $password);
+if (!$con)
+{
 
-mysql_select_db("testtable");
+die('Could not connect: ' . mysql_error());
+
+}
+
+mysql_select_db("mydb");
 
 
 if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
